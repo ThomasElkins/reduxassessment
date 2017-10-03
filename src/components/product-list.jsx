@@ -17,7 +17,13 @@ class ProductList extends Component {
         return product.title.toUpperCase().includes(this.props.filterPhrase)
       }
     }).sort((a,b) => {
-      
+      if(a[this.props.toggleSort] > b[this.props.toggleSort]) {
+        return -1;
+      } else if(a[this.props.toggleSort] < b[this.props.toggleSort]) {
+        return 1;
+      } else {
+        return 0;
+      }
     })
     .map(product => <Product key={product.id} product={product} />)
 
@@ -32,7 +38,8 @@ class ProductList extends Component {
 function mapStateToProps(state, props) {
   return {
     products: state.products,
-    filterPhrase: state.filterPhrase
+    filterPhrase: state.filterPhrase,
+    toggleSort: state.toggleSort
   }
 }
 

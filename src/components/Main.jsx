@@ -3,7 +3,7 @@ import { Input } from 'react-materialize';
 import ProductList from './product-list';
 import ShoppingCart from './shopping-cart';
 import { bindActionCreators } from 'redux';
-import { updateFilterPhrase } from '../actions/products';
+import { updateFilterPhrase, toggleSort } from '../actions/products';
 import { connect } from 'react-redux';
 
 class Main extends Component {
@@ -18,7 +18,7 @@ class Main extends Component {
                 <Input onChange={(e) => this.props.updateFilterPhrase(e.target.value)} placeholder="Search..." s={12} />
               </div>
               <div className="input-field col s4">
-                <Input s={12} type='select' defaultValue='name'>
+                <Input onChange={(e) => this.props.toggleSort(e.target.value)} s={12} type='select' defaultValue='name'>
                   <option value='name'>Name</option>
                   <option value='rating'>Rating</option>
                 </Input>
@@ -40,6 +40,7 @@ class Main extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     updateFilterPhrase: bindActionCreators(updateFilterPhrase, dispatch),
+    toggleSort: bindActionCreators(toggleSort, dispatch)
   }
 }
 
