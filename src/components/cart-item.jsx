@@ -8,7 +8,7 @@ import { removeFromCart } from '../actions/shopping-cart';
 class CartItem extends Component {
   render () {
 
-    let { id, title, image, rating, price, onSale } = this.props.item;
+    let { id, title, price } = this.props.item;
 
     return (
       <div className="cartItems">
