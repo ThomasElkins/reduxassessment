@@ -7,3 +7,7 @@ body {
 .cartItems {
   float: right;
 }
+
+.red {
+  text-decoration-color: red;
+}

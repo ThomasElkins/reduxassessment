@@ -10,7 +10,17 @@ class ProductList extends Component {
       this.props.getAllProducts();
   }
   render () {
-    let products = this.props.products.map(product => <Product key={product.id} product={product} />)
+    let products = this.props.products.filter(product => {
+      if(!this.props.filterPhrase.length) {
+        return true;
+      } else {
+        return product.title.toUpperCase().includes(this.props.filterPhrase)
+      }
+    }).sort((a,b) => {
+      
+    })
+    .map(product => <Product key={product.id} product={product} />)
+
     return (
       <div className="col s4 m6">
         {products}
@@ -22,6 +32,7 @@ class ProductList extends Component {
 function mapStateToProps(state, props) {
   return {
     products: state.products,
+    filterPhrase: state.filterPhrase
   }
 }
 

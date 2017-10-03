@@ -13,8 +13,8 @@ class Product extends Component {
             <h4>{title}</h4>
             <img alt="camerapic" src={image} height="125" width="150" />
             <h5>${price}</h5>
-            {onSale ? "ON SALE" : ""}
-            <h5>{rating}</h5>
+            <p className="red">{onSale ? "ON SALE" : ""}</p>
+            <h5>{rating} Stars</h5>
             <Button onClick={() => this.props.addToCart(id)}>Add to Cart</Button>
         </div>
     )
